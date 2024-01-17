@@ -1,7 +1,6 @@
 *{
     margin: 0;
     box-sizing: border-box;
-
 }
 body{
     font-family: cursive;
@@ -15,7 +14,6 @@ body{
     animation: cambioFondo 30s 5s infinite;
     
 }
-
 .container{
     position: absolute;
     transform: translate(-50%,0);
@@ -24,7 +22,7 @@ body{
     
     margin-top: 2%;
 }
-
+/*-------CABECERA-------- */
 .cabecera{
     color: transparent;
     font-size: 4em;
@@ -34,6 +32,8 @@ body{
     position: relative;
     animation: cambioColorTexto 20s linear infinite;
 }
+
+/*-------ANIMACION CABECERA--------*/
 @keyframes cambioColorTexto {
     0% {
         -webkit-text-stroke-color: rgb(255, 0, 0);
@@ -66,7 +66,6 @@ body{
   background-color: rgb(0, 0, 0); 
   transition: transform 1s linear;
 }
-
 .cabecera::before {
   top: 0;
   left: 0;
@@ -74,7 +73,6 @@ body{
   transform: scaleX(0);
   animation: animateBorderTop 5s infinite linear;
 }
-
 .cabecera::after {
   bottom: 0;
   left: 0;
@@ -82,7 +80,6 @@ body{
   transform: scaleX(0);
   animation: animateBorderBottom 5s infinite linear;
 }
-
 @keyframes animateBorderTop {
     0%, 100% {
         transform: scaleX(0);
@@ -99,7 +96,6 @@ body{
         background-color: blue; 
     }
 }
-
 @keyframes animateBorderBottom {
     0%, 100% {
         transform: scaleX(0);
@@ -117,6 +113,7 @@ body{
     }
 }
 
+/*-----------ANIMACIÓN DEL FONDO---------*/
 .fondoAnimado{
     background-color: pink;
     width: 100%;
@@ -150,25 +147,6 @@ body{
     animation: goingUp 25s linear infinite;
     bottom: -150px;
 }
-/* .imagenes{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    border: none;
-} */
-/* .imagenes li{
-    background-image: url(/img/mario-8053171_640.png);
-    list-style: none;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    
-    animation: goingUp 25s linear infinite;
-    bottom: -150px;
-} */
 .cuadros li:nth-child(1){
     left: 5%;
     width: 90px;
@@ -256,7 +234,6 @@ body{
     animation-delay: 0s;
     animation-duration: 5s;
 }
-
 @keyframes goingUp {
     0% {
         transform: translateY(0) rotate(0);
@@ -272,7 +249,6 @@ body{
         
     }
 }
-
 @keyframes cambioFondo{
     0%{
         background-color: pink;
@@ -289,5 +265,4 @@ body{
     100%{
         background-color: pink;
     }
-
 }
