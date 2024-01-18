@@ -752,3 +752,6 @@ input.btn-secondary.btn-off{
     opacity: 1;
     transform: translateY(0);
 }
+.selector{
+    display: none;
+}

@@ -30,7 +30,12 @@ const App = {
             audioStart.currentTime = 0;
             audioStart.play();
         }
-
+        function playSound3(){
+            console.log('Musica');
+            audioJuegosMusic.currentTime = 0;
+            audioJuegosMusic.play();
+        }
+        let audioJuegosMusic = document.getElementById('juegosMusic');
         const audioIntro = document.getElementById('intro');
         const audioStart = document.getElementById('start');
         const power = document.querySelector('.power');
@@ -51,8 +56,8 @@ const App = {
 
         const btnControles = document.querySelector('.gameboy .btn-controles .btn-start-select');
 
-    btnControles.addEventListener('click', function (event) {
-    const clickedElement = event.target.id;
+        btnControles.addEventListener('click', function (event) {
+        const clickedElement = event.target.id;
 
     if (clickedElement === 'start') {
         mostrarJuego();
@@ -71,41 +76,30 @@ const App = {
     
             
             juegoVisible.style.display = 'block';
-    
+            
             // Añade la clase 'show' con retardo incremental
             for (let i = 0; i < juegos.length; i++) {
                 setTimeout(function () {
                     juegos[i].classList.add("show");
                 }, i * 500); 
-    
-               
             }
-    
+            
             document.querySelector('.pulsaStart').style.display = 'none';
             document.querySelector('.animacionInicio').style.display = 'none';
-            
             texto.classList.remove('end');
-            
         }
+        if(document.querySelector('.juego').style.display === 'block' && audioJuegosMusic.paused){
+            playSound3();
+        }
+        
     }
     
-
-
-       
-        
-        
         App.btnOn = function () {
             power.classList.add('power-on');
-
             const transitionEvent = whichTransitionEvent();
             texto.classList.add('end');
-
-
             texto.addEventListener(transitionEvent, function(){
-
                 playSound();
-                
-
                 setTimeout(function(){
                     document.querySelector('.pulsaStart').style.display = 'inline-block'; 
                 },2500);
@@ -114,6 +108,25 @@ const App = {
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
             pantallaJuegoElement.style.background = '#ffd700';
         };
+        document.addEventListener('DOMContentLoaded', function () {
+            const juegos = document.querySelectorAll('#juegos li');
+            
+            juegos.forEach(function (juego) {
+                juego.addEventListener('click', function () {
+                    // Oculta todas las flechas
+                    document.querySelectorAll('.selector').forEach(function (selector) {
+                        selector.style.display = 'none';
+                        
+                    });
+        
+                    // Muestra la flecha solo en el elemento clicado
+                    const selector = juego.querySelector('.selector');
+                    if (selector) {
+                        selector.style.display = 'inline-block';
+                    }
+                });
+            });
+        });
 
         App.btnOff = function () {
             power.classList.remove('power-on');
@@ -126,6 +139,11 @@ const App = {
             document.querySelector('.animacionInicio').style.display = 'inline';
             power.classList.remove('power-on');
             texto.classList.remove('end');
+
+            if (audioJuegosMusic && !audioJuegosMusic.paused) {
+                audioJuegosMusic.pause();
+                audioJuegosMusic.currentTime = 0; // Reinicia la posición de reproducción al principio del sonido
+            }
         };
     }
 };
