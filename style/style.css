@@ -384,4 +384,41 @@ input.btn-secondary.btn-off{
     background-color: #8b1d90;
     box-shadow: 0 6px 0 #283593; 
 }
+/* Indicador de batería*/
+.gameboy .pantalla .power{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 100px;
+    left: 20px;
+    border-radius: 100%;
+    background-color: #b98181;
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
+.gameboy .pantalla .power:before{
+    content: "BATTERY";
+    position: relative;
+    top: 18px;
+    left: -10px;
+    font-size: 8px;
+    font-family: sans-serif;
+    color: #b3b3b3;
+}
+.gameboy .screen-cont .power.power-on {
+    background-color: #f00;
+    box-shadow: 0 0 3px 1px #ef5350;
+  }
+
+/* Botones de control*/
+.gameboy .btn-controles{
+    display: block;
+    position: relative;
+    margin-top: 90px;
+}  
+/* Estilos cruceta de dirección */
 
