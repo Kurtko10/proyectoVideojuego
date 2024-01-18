@@ -710,7 +710,7 @@ input.btn-secondary.btn-off{
     font-size: 17px;
     font-family: "Pretendo";
     z-index: 10;
-    animation: parpadeo 1s infinite; /* Añade una animación de parpadeo */
+    animation: parpadeo 1s infinite; 
   }
   @keyframes parpadeo {
     0%, 49%, 100% {
@@ -724,7 +724,7 @@ input.btn-secondary.btn-off{
   /*LISTA JUEGOS*/
 
   .juego {
-    display: none; /* Cambiado de 'none' para hacer visible la transición */
+    display: none; 
     opacity: 1;
     position: relative;
     top: -130px;

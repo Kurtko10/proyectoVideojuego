@@ -65,27 +65,27 @@ const App = {
         const juegoVisible = document.querySelector('.juego');
         const juegos = document.querySelectorAll('.juego li');
     
-        // Verifica si la propiedad display de .pulsaStart es 'inline-block'
+        
         if (document.querySelector('.pulsaStart').style.display === 'inline-block') {
             playSound2();
     
-            // Cambia el estilo del elemento para hacerlo visible
+            
             juegoVisible.style.display = 'block';
     
             // Añade la clase 'show' con retardo incremental
             for (let i = 0; i < juegos.length; i++) {
                 setTimeout(function () {
                     juegos[i].classList.add("show");
-                }, i * 500); // Ajusta este valor según sea necesario para el tiempo de retardo entre elementos
+                }, i * 500); 
     
-                // También puedes ajustar la lógica aquí para mostrar otros elementos o realizar acciones adicionales
+               
             }
     
             document.querySelector('.pulsaStart').style.display = 'none';
             document.querySelector('.animacionInicio').style.display = 'none';
             
             texto.classList.remove('end');
-            // Puedes agregar estilos adicionales o cualquier otra configuración necesaria
+            
         }
     }
     
