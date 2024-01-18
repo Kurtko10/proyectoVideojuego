@@ -565,7 +565,40 @@ input.btn-secondary.btn-off{
     box-shadow: 5px 0 #ddd;
     border-radius: 4px 4px 0 0;
   }  
+/*selector on-off*/
+.on-off {
+    position: absolute;
+    top: 2px;
+    left: 20%;
+    padding: 3px 5px;
+    transform: translateX(-50%);
+    color: #dadada;
+    background-color: #e8e8e8;
+    font-size: 8px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    border-radius: 30px;
+  }
+  .on-off:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 5px;
+    top: -2px;
+    background-color: #e8e8e8;
+    left: 6px;
+  }
+  .on-off:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 5px;
+    top: -2px;
+    left: 9px;
+    background-color: #ddd;
+    box-shadow: 5px 0 #ddd;
+    border-radius: 0 0 3px 3px;
+  }
 
-  
 
 
