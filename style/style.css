@@ -487,6 +487,7 @@ input.btn-secondary.btn-off{
     background: #dfdfdf;
     border-radius: 30px;
     -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
 }
 .gameboy .btn-controles .btn-AB::after{
     content: "";
@@ -499,4 +500,72 @@ input.btn-secondary.btn-off{
     box-shadow: 68px 0 #a93671;
     border-radius: 100%;
     -webkit-transform: rotate(180deg);
+    transform: rotate(-180deg);
 }
+
+/* Altavoz*/
+.gameboy .altavoz{
+    content: "";
+    position: relative;
+    height: 70px;
+    width: 8px;
+    top: 260px;
+    left: 300px;
+    background: #ddd;
+    border-radius: 4px;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg);
+    box-shadow: 20px 0 #ddd, 40px 0 #ddd, 60px 0 #ddd, 80px 0 #ddd, 100px 0 #ddd;    
+}
+
+/* Botones start y select*/
+.gameboy .btn-controles .btn-start-select {
+    position: absolute;
+    top: 205px;
+    left: 140px;
+    height: 12px;
+    width: 60px;
+    background: #999;
+    border-radius: 10px;
+    -webkit-transform: rotate(-25deg);
+    transform: rotate(-25deg) ;
+    box-shadow: 57px 27px #999, 0 0 0 5px #dfdfdf, 57px 27px 0 5px #dfdfdf;
+}
+/* auriculares*/
+.phones {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    padding: 3px 5px;
+    transform: translateX(-50%);
+    color: #dadada;
+    background-color: #e8e8e8;
+    font-size: 8px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    border-radius: 30px;
+  }
+  .phones:before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 5px;
+    bottom: -4px;
+    background-color: #e8e8e8;
+    left: 9px;
+  }
+  .phones:after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 5px;
+    bottom: -4px;
+    left: 12px;
+    background-color: #ddd;
+    box-shadow: 5px 0 #ddd;
+    border-radius: 4px 4px 0 0;
+  }  
+
+  
+
+
