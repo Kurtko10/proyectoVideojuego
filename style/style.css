@@ -421,4 +421,82 @@ input.btn-secondary.btn-off{
     margin-top: 90px;
 }  
 /* Estilos cruceta de dirección */
-
+.gameboy .btn-controles .btn-direccion {
+    position: relative;
+    margin-left: 40px;
+    top: 60px;
+  }
+  .gameboy .btn-controles .btn-direccion:before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 30px;
+    left: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #353535;
+    border-radius: 100%;
+  }
+  .gameboy .btn-controles .btn-direccion .btn-vertical,
+.gameboy .btn-controles .btn-direccion .btn-horizontal {
+  position: absolute;
+  left: 30px;
+  width: 30px;
+  height: 90px;
+  background: #444;
+  border-radius: 5px;
+}
+.gameboy .btn-controles .btn-direccion .btn-vertical::before,
+.gameboy .btn-controles .btn-direccion .btn-horizontal::before{
+    content: "";
+    position: relative;
+    top: 99px;
+    left: 8px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #bbbbbb;
+} 
+.gameboy .btn-controles .btn-direccion .btn-vertical::after,
+.gameboy .btn-controles .btn-direccion .btn-horizontal::after{
+    content: "";
+    position: relative;
+    top: -32px;
+    left: -5.6px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #bbbbbb;
+}
+.gameboy .btn-controles .btn-direccion .btn-horizontal{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+/* Botones AB*/
+.gameboy .btn-controles .btn-AB {
+    position: absolute;
+    top: 72px;
+    left: 252px;
+    width: 130px;
+    height: 60px;
+    background: #dfdfdf;
+    border-radius: 30px;
+    -webkit-transform: rotate(-25deg);
+}
+.gameboy .btn-controles .btn-AB::after{
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    width: 44px;
+    height: 44px;
+    background: #a93671;
+    box-shadow: 68px 0 #a93671;
+    border-radius: 100%;
+    -webkit-transform: rotate(180deg);
+}
