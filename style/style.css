@@ -410,8 +410,8 @@ input.btn-secondary.btn-off{
     font-family: sans-serif;
     color: #b3b3b3;
 }
-.gameboy .screen-cont .power.power-on {
-    background-color: #f00;
+.power.power-on {
+    background-color: #f00 !important;
     box-shadow: 0 0 3px 1px #ef5350;
   }
 
