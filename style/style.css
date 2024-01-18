@@ -266,3 +266,40 @@ body{
         background-color: pink;
     }
 }
+
+/* -------------------ESTILOS CONSOLA------------- */
+@font-face {
+    font-family: 'Pretendo';
+    src: url("/font/Pretendo.ttf") format('truetype'), url("/font/Pretendo.woff") format('woff'), url("/font/Pretendo.woff2") format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+  /* Ponemos la consola en la primera capa*/
+  .container.mt-3{
+    z-index: 1;
+  }
+  /*Estilos de botones ON-OFF*/
+input.btn-primary.btn-on,
+input.btn-secondary.btn-off {
+    color: black;
+    background:none;
+    display: block;
+    margin: 0 auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+/*Oculta el botón OFF*/
+input.btn-secondary.btn-off{
+    display: none;
+}
+/*Estilos de aspecto de la consola*/
+.gameboy {
+    position: relative;
+    display: block;
+    margin: 20px auto;
+    max-width: 422px; /* Establece un ancho máximo */
+    height: 697px; /* Establece una altura máxima */
+    background: #eee;
+    border-radius: 10px 10px 60px 10px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+  }
