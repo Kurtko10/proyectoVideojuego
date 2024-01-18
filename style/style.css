@@ -561,10 +561,12 @@ input.btn-secondary.btn-off{
 #select{
     bottom: -15px;
     right: 5px;
+    cursor: pointer;
 }
 #start{
     bottom: -15px;
     right: -52px;
+    cursor: pointer;
 }
 
 .gameboy .btn-controles .btn-start-select::before,
@@ -718,3 +720,35 @@ input.btn-secondary.btn-off{
         opacity: 1;
     }
   }
+
+  /*LISTA JUEGOS*/
+
+  .juego {
+    display: none; /* Cambiado de 'none' para hacer visible la transición */
+    opacity: 1;
+    position: relative;
+    top: -130px;
+    right: -75px;
+    color: #8a891f;
+    font-size: 17px;
+    font-family: "Pretendo";
+    z-index: 1;
+}
+
+
+.juego ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 15px;
+}
+
+.juego li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.juego li.show {
+    opacity: 1;
+    transform: translateY(0);
+}
