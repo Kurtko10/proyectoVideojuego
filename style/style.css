@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body{
@@ -12,7 +13,8 @@ body{
     background-size:contain;
     background-repeat: repeat;
     animation: cambioFondo 30s 5s infinite;
-    
+    margin: 0;
+    padding: 0;
 }
 .container{
     position: absolute;
@@ -25,12 +27,17 @@ body{
 /*-------CABECERA-------- */
 .cabecera{
     color: transparent;
+    width: 100%;
+    margin: 0;
+    background: rgba(128, 128, 128, 0.318); /* Color de fondo sólido */
+    background-image: radial-gradient(rgba(128, 128, 128, 0.373), rgba(0, 0, 0, 0.452));
     font-size: 4em;
     text-align: center;
     -webkit-text-stroke:5px rgb(0, 0, 0);
     padding-bottom: 12px;
     position: relative;
     animation: cambioColorTexto 20s linear infinite;
+    z-index: 2;
 }
 
 /*-------ANIMACION CABECERA--------*/
@@ -62,7 +69,7 @@ body{
   content: '';
   position: absolute;
   width: 100%;
-  height: 5px;
+  height: 8px;
   background-color: rgb(0, 0, 0); 
   transition: transform 1s linear;
 }
@@ -145,7 +152,7 @@ body{
     height: 20px;
     background-image: radial-gradient(circle, rgb(255, 160, 160), rgba(255, 0, 43, 0.442));
     animation: goingUp 25s linear infinite;
-    bottom: -150px;
+    bottom: -300px;
 }
 .cuadros li:nth-child(1){
     left: 5%;
@@ -296,10 +303,51 @@ input.btn-secondary.btn-off{
 .gameboy {
     position: relative;
     display: block;
-    margin: 20px auto;
-    max-width: 422px; /* Establece un ancho máximo */
+    margin: 150px auto;
+    width: 422px; /* Establece un ancho máximo */
     height: 697px; /* Establece una altura máxima */
     background: #eee;
     border-radius: 10px 10px 60px 10px;
     box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
   }
+  /*añade elementos en la cabecesa de la consola*/
+.gameboy::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 31px;
+    border-bottom: 4px solid #e0e0e0;
+  }
+  .gameboy::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 334px;
+    height: 31px;
+    border-left: 4px solid #e0e0e0;
+    border-right: 4px solid #e0e0e0;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  /*Estilo del área de la pantalla*/
+  .gameboy .pantalla{
+    position: relative;
+    top: 60px;
+    left: 40px;
+    width: 342px;
+    height: 272px;
+    margin-bottom: 58px;
+    background-color: #777;
+    border-radius: 13px 13px 50px 13px;
+  }
+/* Estilo de la pantalla de juego */
+.gameboy .pantalla .pantallaJuego{
+    position: relative;
+    top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #bdae58;
+    width: 225px;
+    height: 205px;
+    box-shadow: inset 3px 3px rgba(0,0,0,0.15);
+}
