@@ -48,7 +48,17 @@ const App = {
 
             const transitionEvent = whichTransitionEvent();
             texto.classList.add('end');
-            texto.addEventListener(transitionEvent, playSound);
+
+
+            texto.addEventListener(transitionEvent, function(){
+
+                playSound();
+                
+
+                setTimeout(function(){
+                    document.querySelector('.pulsaStart').style.display = 'inline-block'; 
+                },2000);
+            });
 
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
             pantallaJuegoElement.style.background = '#ffd700';
@@ -60,6 +70,7 @@ const App = {
 
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
             pantallaJuegoElement.style.background = '#bdae58';
+            document.querySelector('.pulsaStart').style.display = 'none';
         };
     }
 };
