@@ -125,7 +125,7 @@ const App = {
 //Variable para que el boton ON-OFF esté apagado        
         let isOn = false;
 
-//Función para el boton onOff        
+//Función para llamar el boton onOff        
         onOffBoton.onclick = function () {
             if (isOn) {
                 App.btnOff();
