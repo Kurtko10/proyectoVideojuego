@@ -4,6 +4,7 @@ const App = {
     },
 
     viedoConsola: function () {
+        
         function whichTransitionEvent() {
             let t;
             const el = document.createElement('fake');
@@ -69,6 +70,7 @@ App.btnOff = function () {
             audioJuegosMusic.currentTime = 0;
             audioJuegosMusic.play();
         }
+        
 
 //Variables para obtener elementos de DOM        
         let audioJuegosMusic = document.getElementById('juegosMusic');
@@ -130,36 +132,80 @@ App.btnOff = function () {
         }
 //Para cambiar la flecha del selector de juegos
         document.addEventListener('DOMContentLoaded', function () {
-            const juegos = document.querySelectorAll('#juegos li');
-    
-            juegos.forEach(function (juego) {
-                juego.addEventListener('click', function () {
-                ocultarTodasLasFlechas();
-    
-                const selector = juego.querySelector('.selector');
-                if (selector) {
-                    selector.style.display = 'inline-block';
-                }
-            });
-        });
-        
-        const juegoSeleccionado = document.querySelector('.seleccionado .selector');
-            if (juegoSeleccionado) {
-            juegoSeleccionado.style.display = 'inline-block';
+        const juegos = document.querySelectorAll('#juegos li');
+
+        juegos.forEach(function (juego) {
+            juego.addEventListener('click', function () {
+            ocultarTodasLasFlechas();
+
+            // Elimina la clase 'seleccionado' del juego anterior
+            document.querySelector('.seleccionado')?.classList.remove('seleccionado');
+
+            // Agrega la clase 'seleccionado' al juego actual
+            juego.classList.add('seleccionado');
+
+            const selector = juego.querySelector('.selector');
+            if (selector) {
+                selector.style.display = 'inline-block';
             }
-        });
-//Funcion para ocultar las flechas en los juegos    
-        function ocultarTodasLasFlechas() {
-            document.querySelectorAll('.selector').forEach(function (selector) {
-            selector.style.display = 'none';
             });
+        });
+
+// Agrega la clase 'selector' al elemento seleccionado al inicializar
+        const juegoSeleccionado = document.querySelector('.seleccionado .selector');
+        if (juegoSeleccionado) {
+        juegoSeleccionado.style.display = 'inline-block';
+     }
+});
+
+// Función para ocultar todas las flechas en los juegos    
+    function ocultarTodasLasFlechas() {
+        document.querySelectorAll('.selector').forEach(function (selector) {
+        selector.style.display = 'none';
+        });
+    }
+
+    const btnAB = document.querySelector('.btn-AB');
+
+    btnAB.addEventListener('click', function () {
+// Obtén el elemento seleccionado actualmente
+    const juegoSeleccionado = document.querySelector('#juegos .seleccionado');
+
+// Verifica si hay un juego seleccionado
+    if (juegoSeleccionado) {
+        // Obtiene el valor del juego seleccionado
+        const juegoSeleccionadoValue = juegoSeleccionado.getAttribute('data-value');
+
+        // Define un array con las acciones para cada juego
+        const accionesPorJuego = {
+            'mario': () => {
+                // Lógica para el juego Mario
+                console.log('Acción para Mario');
+            },
+            'tetris': () => {
+                // Lógica para el juego Tetris
+                console.log('Acción para Tetris');
+            },
+            'zelda': () => {
+                // Lógica para el juego Zelda
+                console.log('Acción para Zelda');
+            }
         };
 
-
-
+        // Verifica si existe una acción definida para el juego seleccionado
+        if (juegoSeleccionadoValue && accionesPorJuego.hasOwnProperty(juegoSeleccionadoValue)) {
+            // Ejecuta la acción correspondiente al juego seleccionado
+            accionesPorJuego[juegoSeleccionadoValue]();
+        } else {
+            // Acción por defecto o manejo de otros juegos
+            console.log('Acción por defecto o manejo de otros juegos');
+        }
+    } else {
+        // Acción si no hay ningún juego seleccionado
+        console.log('No hay juego seleccionado');
+    }
+});
 }
-
-
 };
 
 App.init();

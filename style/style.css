@@ -754,3 +754,6 @@ input.btn-secondary.btn-off{
     display: none;
     
 }
+audio{
+    display: none;
+}
