@@ -27,6 +27,7 @@ body{
 /*-------CABECERA-------- */
 .cabecera{
     color: transparent;
+    display: flexbox;
     width: 100%;
     margin: 0;
     background: rgba(128, 128, 128, 0.318); /* Color de fondo sólido */
@@ -755,7 +756,7 @@ input.btn-secondary.btn-off{
     
 }
 
-/*Etiquetas de audio ocultas*/
+/*Etiquetas de audio o
 audio{
     display: none;
 }
