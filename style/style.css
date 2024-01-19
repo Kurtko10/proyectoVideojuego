@@ -734,8 +734,6 @@ input.btn-secondary.btn-off{
     font-family: "Pretendo";
     z-index: 1;
 }
-
-
 .juego ul {
     list-style-type: none;
     padding: 0;
@@ -746,12 +744,13 @@ input.btn-secondary.btn-off{
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    cursor: pointer;
 }
-
 .juego li.show {
     opacity: 1;
     transform: translateY(0);
 }
 .selector{
     display: none;
+    
 }

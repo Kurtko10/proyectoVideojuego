@@ -20,7 +20,39 @@ const App = {
                 }
             }
         }
-     
+//Funcion que al encender la consola        
+App.btnOn = function () {
+    power.classList.add('power-on');
+    const transitionEvent = whichTransitionEvent();
+    texto.classList.add('end');
+    texto.addEventListener(transitionEvent, function(){
+        playSound();
+            setTimeout(function(){
+            document.querySelector('.pulsaStart').style.display = 'inline-block'; 
+            },2500);
+        });
+
+    const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
+    pantallaJuegoElement.style.background = '#ffd700';
+};
+//Funcion al apagar la consola
+App.btnOff = function () {
+    power.classList.remove('power-on');
+    texto.classList.remove('end');
+
+    const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
+    pantallaJuegoElement.style.background = '#bdae58';
+    document.querySelector('.pulsaStart').style.display = 'none';
+    document.querySelector('.juego').style.display = 'none';
+    document.querySelector('.animacionInicio').style.display = 'inline';
+    power.classList.remove('power-on');
+    texto.classList.remove('end');
+
+    if (audioJuegosMusic && !audioJuegosMusic.paused) {
+        audioJuegosMusic.pause();
+        audioJuegosMusic.currentTime = 0; // Reinicia la posición de reproducción al principio del sonido
+        }
+};     
         
 //Funciones para reproducir cada sound correspondiente
         function playSound() {
@@ -60,7 +92,7 @@ const App = {
         };
 
 
-//MOSTRAR SELECT DE JUEGOS
+//Evento click en el start
 
         const btnControles = document.querySelector('.gameboy .btn-controles .btn-start-select');
         btnControles.addEventListener('click', function (event) {
@@ -71,6 +103,7 @@ const App = {
             }
         });
 
+//Muestra la seleccion de juegos
         function mostrarJuego() {
             const juegoVisible = document.querySelector('.juego');
             const juegos = document.querySelectorAll('.juego li');
@@ -79,7 +112,7 @@ const App = {
                 playSound2();
                 juegoVisible.style.display = 'block';
             
-            // Añade la clase 'show' con retardo incremental
+// Añade la clase 'show' con retardo incremental
                 for (let i = 0; i < juegos.length; i++) {
                     setTimeout(function () {
                         juegos[i].classList.add("show");
@@ -95,7 +128,7 @@ const App = {
             }
         
         }
-
+//Para cambiar la flecha del selector de juegos
         document.addEventListener('DOMContentLoaded', function () {
             const juegos = document.querySelectorAll('#juegos li');
     
@@ -115,51 +148,15 @@ const App = {
             juegoSeleccionado.style.display = 'inline-block';
             }
         });
-    
+//Funcion para ocultar las flechas en los juegos    
         function ocultarTodasLasFlechas() {
             document.querySelectorAll('.selector').forEach(function (selector) {
             selector.style.display = 'none';
             });
         };
 
-    App.btnOn = function () {
-        power.classList.add('power-on');
-        const transitionEvent = whichTransitionEvent();
-        texto.classList.add('end');
-        texto.addEventListener(transitionEvent, function(){
-            playSound();
-                setTimeout(function(){
-                document.querySelector('.pulsaStart').style.display = 'inline-block'; 
-                },2500);
-            });
-
-        const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
-        pantallaJuegoElement.style.background = '#ffd700';
-    };
-
-        
-       
 
 
-
-
-    App.btnOff = function () {
-        power.classList.remove('power-on');
-        texto.classList.remove('end');
-
-        const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
-        pantallaJuegoElement.style.background = '#bdae58';
-        document.querySelector('.pulsaStart').style.display = 'none';
-        document.querySelector('.juego').style.display = 'none';
-        document.querySelector('.animacionInicio').style.display = 'inline';
-        power.classList.remove('power-on');
-        texto.classList.remove('end');
-
-        if (audioJuegosMusic && !audioJuegosMusic.paused) {
-            audioJuegosMusic.pause();
-            audioJuegosMusic.currentTime = 0; // Reinicia la posición de reproducción al principio del sonido
-            }
-    };
 }
 
 
