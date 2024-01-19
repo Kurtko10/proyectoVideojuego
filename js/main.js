@@ -4,10 +4,10 @@ const App = {
 //Inicializa al cargar la página    
     init: function () {
 //Llamada a la función ViedoConsola        
-        App.viedoConsola();
+        App.videoConsola();
     },
 //Funcion que contiene el resto de funciones, animaciones
-    viedoConsola: function () {
+    videoConsola: function () {
 //Detecta la transición compatible con el navegador        
         function whichTransitionEvent() {
             let t;
@@ -241,6 +241,7 @@ const App = {
                 document.querySelector('#juegoPacman img').style.display='inline-block';
             }
             };
+          
 // Verifica si existe una acción definida para el juego seleccionado
         if (juegoSeleccionadoValue && accionesPorJuego.hasOwnProperty(juegoSeleccionadoValue)) {
             
@@ -252,7 +253,10 @@ const App = {
         
         console.log('No hay juego seleccionado');
         }
+        
 });
+// Evento click en el botón start independiente de btnAB
+
 }
 };
 App.init();
