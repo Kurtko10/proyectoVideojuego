@@ -754,9 +754,14 @@ input.btn-secondary.btn-off{
     display: none;
     
 }
+
+/*Etiquetas de audio ocultas*/
 audio{
     display: none;
 }
+
+/* Estilos para la visualización de los juegos */
+
 #juegoMario img, #juegoTetris img, #juegoPacman img{
     margin-left: auto;
     margin-right: auto;
