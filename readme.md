@@ -71,9 +71,13 @@ El diseño del CSS de la consola está inspirado en el repositorio [gameboy-css]
 
 ## <ins>Capturas de Pantalla</ins>
 
-![Captura de pantalla 1](screenshots/screenshot1.png)
-![Captura de pantalla 2](screenshots/screenshot2.png)
-![Captura de pantalla 3](screenshots/screenshot3.png)
+<img src="/img/encendido.jpg" width="400" alt="apagada">
+
+<img src="/img/pantallaInicio.jpg" width="400" alt="pantalla inicio">
+
+<img src="/img/juegos.jpg" width="400" alt="pantalla juegos">
+
+<img src="/img/responsive.jpg" width="400" alt="responsive">
 
 ## Contribuciones <ins></ins>
 
