@@ -65,6 +65,7 @@ const App = {
             document.querySelector('#juegoPacman img').style.display='none';
             power.classList.remove('power-on');
             texto.classList.remove('end');
+            encendida = false;
 
             if (audioJuegosMusic && !audioJuegosMusic.paused) {
                 audioJuegosMusic.pause();
