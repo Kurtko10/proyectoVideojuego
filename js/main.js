@@ -30,12 +30,18 @@ const App = {
             power.classList.add('power-on');
             const transitionEvent = whichTransitionEvent();
             texto.classList.add('end');
-    
+            
             texto.addEventListener(transitionEvent, function(){
             playSound();
+            
             setTimeout(function(){
             document.querySelector('.pulsaStart').style.display = 'inline-block'; 
-            },2500);
+           
+            },2000);
+            setTimeout(function(){
+                encendida = true;
+            },3000);
+            
             });
 
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
@@ -43,8 +49,11 @@ const App = {
         };
 //Funcion para apagar la consola
         App.btnOff = function () {
+            if(encendida === true){
             power.classList.remove('power-on');
             texto.classList.remove('end');
+            jugando = false;
+            transicionFinalizada= false;
 
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
             pantallaJuegoElement.style.background = '#bdae58';
@@ -69,6 +78,7 @@ const App = {
                 musicaTetris.currentTime = 0;
                 musicaPacman.currentTime = 0;
             }
+        }
         };     
         
 //Funciones para reproducir cada sonido correspondiente
@@ -124,6 +134,10 @@ const App = {
         const btnControles = document.querySelector('.gameboy .btn-controles .btn-start-select');
 //Variable para que el boton ON-OFF esté apagado        
         let isOn = false;
+        let jugando = false;
+        let encendida = false;
+
+        let transicionFinalizada = false;
 
 //Función para llamar el boton onOff        
         onOffBoton.onclick = function () {
@@ -139,9 +153,12 @@ const App = {
         btnControles.addEventListener('click', function (event) {
             const clickedElement = event.target.id;
 
-            if (clickedElement === 'start') {
-            mostrarJuego();
+            if (clickedElement === 'start' || jugando === true) {
+                transicionFinalizada = true;
+                mostrarJuego();
+            
             }
+           
         });
 
 //Muestra la seleccion de juegos
@@ -205,9 +222,12 @@ const App = {
 //Evento para el botón AB        
         btnAB.addEventListener('click', function () {
 
-        const juegoSeleccionado = document.querySelector('#juegos .seleccionado');
+        if (transicionFinalizada) {
+            const juegoSeleccionado = document.querySelector('#juegos .seleccionado');
+            // Resto de tu código para btnAB
+        
 
-        if (juegoSeleccionado) {
+        if (juegoSeleccionado && jugando === false && isOn === true) {
             const juegoSeleccionadoValue = juegoSeleccionado.getAttribute('data-value');
             const juegoElemento = document.querySelector('.juego');
             juegoElemento.style.display = 'none';
@@ -222,15 +242,17 @@ const App = {
                 playSound4();
                 document.querySelector('#juegoTetris img').style.display='none';
                 document.querySelector('#juegoMario img').style.display='inline-block';
-                document.querySelector('#juegoPacman').style.display='none';
+                document.querySelector('#juegoPacman img').style.display='none';
+                jugando = true;
             },
             'tetris': () => {
                 //Acciones juego Tetris
                 console.log('Acción para Tetris');
                 playSound5();
                 document.querySelector('#juegoMario img').style.display='none';
-                document.querySelector('#juegoPacman').style.display='none';
+                document.querySelector('#juegoPacman img').style.display='none';
                 document.querySelector('#juegoTetris img').style.display='inline-block';
+                jugando = true;
             },
             'pacman': () => {
                 //Acciones juego Pacman
@@ -239,6 +261,7 @@ const App = {
                 document.querySelector('#juegoMario img').style.display='none';
                 document.querySelector('#juegoTetris img').style.display='none';
                 document.querySelector('#juegoPacman img').style.display='inline-block';
+                jugando = true;
             }
             };
           
@@ -246,13 +269,8 @@ const App = {
         if (juegoSeleccionadoValue && accionesPorJuego.hasOwnProperty(juegoSeleccionadoValue)) {
             
             accionesPorJuego[juegoSeleccionadoValue]();
-        } else {
-            console.log('Acción por defecto o manejo de otros juegos');
-        }
-        } else {
-        
-        console.log('No hay juego seleccionado');
-        }
+        } 
+        } }
         
 });
 // Evento click en el botón start independiente de btnAB
