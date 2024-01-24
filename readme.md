@@ -22,9 +22,9 @@ Este proyecto es un emulador simple de Game Boy construido con HTML, CSS y JavaS
 
 ## <ins>Demo</ins>
 
--  [Enlace a la demo en vivo](#)🚀  
+-  [Enlace a la demo en vivo](https://kurtko10.github.io/proyectoVideojuego/)🚀  
 
-- Repo [https://github.com/Kurtko10/proyectoVideojuego]👨🏽‍💻
+-  [Repo](https://github.com/Kurtko10/proyectoVideojuego/tree/master)👨🏽‍💻
 
 ## <ins>Requisitos</ins>
 
