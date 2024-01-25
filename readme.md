@@ -41,9 +41,10 @@ No se requiere ninguna instalación especial. Solo sigue estas instrucciones par
 
 1. Enciende la consola presionando el botón ON-OFF.
 2. Presiona el botón START para comenzar la simulación.
-3. Selecciona un juego de la lista disponible.
-4. Pulsa AB para seleccionar.
+3. Selecciona un juego con el ratón de la lista disponible.
+4. Pulsa A para seleccionar un juego.
 5. ¡Disfruta de la experiencia de juego clásica de Game Boy!
+6. Para volver a la selección de juegos pulsa otra vex START.
 
 ## <ins>Lenguajes y Frameworks Utilizados</ins>
 

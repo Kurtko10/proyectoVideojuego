@@ -6,8 +6,36 @@ const App = {
 //Llamada a la función ViedoConsola        
         App.videoConsola();
     },
+
 //Funcion que contiene el resto de funciones, animaciones
     videoConsola: function () {
+
+//Variables para obtener elementos de DOM   
+const musicaMario = document.getElementById('musicaMario');  
+const musicaTetris = document.getElementById('musicaTetris');
+const musicaPacman = document.getElementById('musicaPacman');
+const audioJuegosMusic = document.getElementById('juegosMusic');
+const audioIntro = document.getElementById('intro');
+const audioStart = document.getElementById('start');
+const power = document.querySelector('.power');
+const texto = document.querySelector('.animacionInicio');
+const onOffBoton = document.querySelector('.on-off');
+const juegoVisible = document.querySelector('.juego');
+const juegos = document.querySelectorAll('.juego li');
+const juegoSeleccionado = document.querySelector('.seleccionado .selector');
+const juego = document.querySelectorAll('#juegos li');
+const btnStart = document.getElementById('btnStart');
+const btnAB = document.querySelector('.btn-A');
+const btnControles = document.querySelector('.gameboy .btn-controles .btn-start-select2');
+
+//Variable para que el boton ON-OFF esté apagado        
+let isOn = false;
+let jugando = false;
+let encendida = false;
+let reiniciar = false;
+let transicionFinalizada = false;
+
+
 //Detecta la transición compatible con el navegador        
         function whichTransitionEvent() {
             let t;
@@ -25,6 +53,7 @@ const App = {
                 }
             }
         }
+        
 //Funcion para encender la consola        
         App.btnOn = function () {
             power.classList.add('power-on');
@@ -32,21 +61,21 @@ const App = {
             texto.classList.add('end');
             
             texto.addEventListener(transitionEvent, function(){
-            playSound();
-            
+            //playSound();
+            playSound('intro');
             setTimeout(function(){
             document.querySelector('.pulsaStart').style.display = 'inline-block'; 
-           
             },2000);
             setTimeout(function(){
                 encendida = true;
+                btnStart.classList.add('active');
             },3000);
-            
             });
 
             const pantallaJuegoElement = document.querySelector('.gameboy .pantalla .pantallaJuego');
             pantallaJuegoElement.style.background = '#ffd700';
         };
+
 //Funcion para apagar la consola
         App.btnOff = function () {
             if(encendida === true){
@@ -65,6 +94,7 @@ const App = {
             document.querySelector('#juegoPacman img').style.display='none';
             power.classList.remove('power-on');
             texto.classList.remove('end');
+            btnStart.classList.remove('active');
             encendida = false;
 
             if (audioJuegosMusic && !audioJuegosMusic.paused) {
@@ -80,65 +110,48 @@ const App = {
                 musicaPacman.currentTime = 0;
             }
         }
-        };     
-        
-//Funciones para reproducir cada sonido correspondiente
-        function playSound() {
-            console.log('Sonido Intro');
-            audioIntro.currentTime = 0;
-            audioIntro.play();
+        };  
+    
+//Función para los sonidos utilizando switch
+        function playSound(sonidos) {
+            switch (sonidos) {
+                case 'intro':
+                    console.log('Sonido Intro');
+                    audioIntro.currentTime = 0;
+                    audioIntro.play();
+                    break;
+                case 'start':
+                    audioStart.currentTime = 0;
+                    audioStart.play();
+                    break;
+                case 'juegosMusic':
+                    console.log('Musica');
+                    audioJuegosMusic.currentTime = 0;
+                    audioJuegosMusic.loop = true;
+                    audioJuegosMusic.play();
+                    break;
+                case 'mario':
+                    console.log('musicaMario');
+                    musicaMario.currentTime = 0;
+                    musicaMario.play();
+                    musicaMario.loop = true;
+                    break;
+                case 'tetris':
+                    console.log('musicaTetris');
+                    musicaTetris.currentTime = 0;
+                    musicaTetris.play();
+                    musicaTetris.loop = true;
+                    break;
+                case 'pacman':
+                    console.log('musicaPacman');
+                    musicaPacman.currentTime = 0;
+                    musicaPacman.play();
+                    musicaPacman.loop = true;
+                    break;
+                default:
+                    console.log('Sonido no reconocido');
+            }
         }
-        function playSound2(){
-            audioStart.currentTime = 0;
-            audioStart.play();
-        }
-        function playSound3(){
-            console.log('Musica');
-            audioJuegosMusic.currentTime = 0;
-            audioJuegosMusic.loop = true;
-            audioJuegosMusic.play();
-        }
-        function playSound4(){
-            console.log('musicaMario');
-            musicaMario.currentTime = 0;
-            musicaMario.play();
-            musicaMario.loop = true;
-        }
-        function playSound5(){
-            console.log('musicaTetris');
-            musicaTetris.currentTime = 0;
-            musicaTetris.play();
-            musicaTetris.loop = true;
-        }
-        function playSound6(){
-            console.log('musicaPacman');
-            musicaPacman.currentTime = 0;
-            musicaPacman.play();
-            musicaPacman.loop = true;
-        }
-
-//Variables para obtener elementos de DOM   
-        const musicaMario = document.getElementById('musicaMario');  
-        const musicaTetris = document.getElementById('musicaTetris');
-        const musicaPacman = document.getElementById('musicaPacman');
-        const audioJuegosMusic = document.getElementById('juegosMusic');
-        const audioIntro = document.getElementById('intro');
-        const audioStart = document.getElementById('start');
-        const power = document.querySelector('.power');
-        const texto = document.querySelector('.animacionInicio');
-        const onOffBoton = document.querySelector('.on-off');
-        const juegoMario = document.getElementById('juegoMario');
-        const juegoTetris = document.getElementById('juegoTetris');
-        const juegoPacman = document.getElementById('juegoPacman');
-        
-        const btnAB = document.querySelector('.btn-AB');
-        const btnControles = document.querySelector('.gameboy .btn-controles .btn-start-select');
-//Variable para que el boton ON-OFF esté apagado        
-        let isOn = false;
-        let jugando = false;
-        let encendida = false;
-
-        let transicionFinalizada = false;
 
 //Función para llamar el boton onOff        
         onOffBoton.onclick = function () {
@@ -151,24 +164,47 @@ const App = {
         };
 
 //Evento click en el start
-        btnControles.addEventListener('click', function (event) {
-            const clickedElement = event.target.id;
+btnControles.addEventListener('click', function (event) {
+    const clickStart = event.target.id;
 
-            if (clickedElement === 'start' || jugando === true) {
-                transicionFinalizada = true;
-                mostrarJuego();
+    if (clickStart === 'btnStart') {
+        if (jugando) {
+            detenerJuegoActivo();
+            reiniciar == true;
             
-            }
-           
-        });
+        } else {
+            transicionFinalizada = true;
+            mostrarJuego();
+        }
+    }
+});
 
+//función para detener el juego activo
+function detenerJuegoActivo() {
+
+    playSound('start');
+    jugando = false;
+    musicaMario.pause();
+    musicaTetris.pause();
+    musicaPacman.pause();
+    musicaMario.currentTime = 0; 
+    musicaTetris.currentTime = 0;
+    musicaPacman.currentTime = 0;
+    
+    document.querySelector('#juegoMario img').style.display = 'none';
+    document.querySelector('#juegoTetris img').style.display = 'none';
+    document.querySelector('#juegoPacman img').style.display = 'none';
+    playSound('juegosMusic');
+    juegoVisible.style.display = 'block';
+    btnStart.classList.remove('active'); 
+
+}
 //Muestra la seleccion de juegos
         function mostrarJuego() {
-            const juegoVisible = document.querySelector('.juego');
-            const juegos = document.querySelectorAll('.juego li');
-    
+
             if (document.querySelector('.pulsaStart').style.display === 'inline-block') {
-                playSound2();
+
+                playSound('start')
                 juegoVisible.style.display = 'block';
             
                 for (let i = 0; i < juegos.length; i++) {
@@ -179,24 +215,24 @@ const App = {
                 document.querySelector('.pulsaStart').style.display = 'none';
                 document.querySelector('.animacionInicio').style.display = 'none';
                 texto.classList.remove('end');
+
+                playSound('juegosMusic');
             }
-            if(document.querySelector('.juego').style.display === 'block' && audioJuegosMusic.paused){
-                playSound3();
-            }
+            
         
         }
 //Para cambiar la flecha del selector de juegos
         document.addEventListener('DOMContentLoaded', function () {
-        const juegos = document.querySelectorAll('#juegos li');
+        
 
-        juegos.forEach(function (juego) {
+        juego.forEach(function (juego) {
             juego.addEventListener('click', function () {
             ocultarTodasLasFlechas();
 
-            // Elimina la clase 'seleccionado' del juego anterior
+// Elimina la clase 'seleccionado' del juego anterior
             document.querySelector('.seleccionado')?.classList.remove('seleccionado');
 
-       // Agrega la clase 'seleccionado' al juego actual
+// Agrega la clase 'seleccionado' al juego actual
                 juego.classList.add('seleccionado');
 
                 const selector = juego.querySelector('.selector');
@@ -206,27 +242,24 @@ const App = {
             });
         });
 
-// Agrega la clase 'selector' al elemento seleccionado al inicializar
-        const juegoSeleccionado = document.querySelector('.seleccionado .selector');
+//Agrega la clase 'selector' al elemento seleccionado al inicializar
+        
         if (juegoSeleccionado) {
         juegoSeleccionado.style.display = 'inline-block';
         }
-        });
-
-// Función para ocultar todas las flechas en los juegos    
+        })
+//función para ocultar todas las flechas en los juegos    
         function ocultarTodasLasFlechas() {
-        document.querySelectorAll('.selector').forEach(function (selector) {
-        selector.style.display = 'none';
-        });
-        }
+            document.querySelectorAll('.selector').forEach(function (selector) {
+            selector.style.display = 'none';
+            });
+            };
 
 //Evento para el botón AB        
         btnAB.addEventListener('click', function () {
 
         if (transicionFinalizada) {
             const juegoSeleccionado = document.querySelector('#juegos .seleccionado');
-            // Resto de tu código para btnAB
-        
 
         if (juegoSeleccionado && jugando === false && isOn === true) {
             const juegoSeleccionadoValue = juegoSeleccionado.getAttribute('data-value');
@@ -238,31 +271,37 @@ const App = {
             const accionesPorJuego = {
             'mario': () => {
                 
-                //Acciones para el juego Mario
+            //Acciones para el juego Mario
                 console.log('Acción para Mario');
-                playSound4();
+            
+                playSound('mario');
                 document.querySelector('#juegoTetris img').style.display='none';
                 document.querySelector('#juegoMario img').style.display='inline-block';
                 document.querySelector('#juegoPacman img').style.display='none';
                 jugando = true;
+                btnStart.classList.add('active');
             },
             'tetris': () => {
-                //Acciones juego Tetris
+            //Acciones juego Tetris
                 console.log('Acción para Tetris');
-                playSound5();
+            
+                playSound('tetris');
                 document.querySelector('#juegoMario img').style.display='none';
                 document.querySelector('#juegoPacman img').style.display='none';
                 document.querySelector('#juegoTetris img').style.display='inline-block';
                 jugando = true;
+                btnStart.classList.add('active');
             },
             'pacman': () => {
-                //Acciones juego Pacman
+            //Acciones juego Pacman
                 console.log('Acción para Pacman');
-                playSound6();
+              
+                playSound('pacman');
                 document.querySelector('#juegoMario img').style.display='none';
                 document.querySelector('#juegoTetris img').style.display='none';
                 document.querySelector('#juegoPacman img').style.display='inline-block';
                 jugando = true;
+                btnStart.classList.add('active');
             }
             };
           
@@ -271,11 +310,8 @@ const App = {
             
             accionesPorJuego[juegoSeleccionadoValue]();
         } 
-        } }
-        
+        }}     
 });
-// Evento click en el botón start independiente de btnAB
-
 }
 };
 App.init();
