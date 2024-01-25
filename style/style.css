@@ -562,12 +562,10 @@ body{
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s ease;
-
-}
-.btn-A:hover::before {
     content: "Botón A";
     opacity: 1;
 }
+
 
 /* Altavoz*/
 
